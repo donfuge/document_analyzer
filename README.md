@@ -7,7 +7,7 @@ https://github.com/karpathy/arxiv-sanity-preserver
 
 ## Instructions
 
-Mostly follow the readme in Karpathy's repo. I removed most functionalities 
+Mostly follow the readme in Karpathy's repo. I removed the functionalities 
 related to serving a webpage and similarity search with SVM.
 
 ## What I found
@@ -27,29 +27,50 @@ class corresponding to the term (1-gram or 2-gram).
 
 ## Examples
 
-![quantum](/plots/quantum.png)
+![quantum](plots/quantum.png)
 
-![machine learning](/plots/machine learning.png)
+![machine learning](plots/machine learning.png)
 
+Interestingly, noise and physics is everywhere:
+
+![Alt Text](plots/noise.png)
+
+![Alt Text](plots/physics.png)
+
+Josephson, qubit and microwave largely overlap (no surprise):
+
+
+![Alt Text](plots/josephson.png)
+
+![Alt Text](plots/qubit.png)
+
+
+![Alt Text](plots/microwave.png)
+
+Material keywords:
+
+![Alt Text](plots/epitaxial.png)
+
+![Alt Text](plots/graphene.png)
+
+![Alt Text](plots/nanowire.png)
+
+![Alt Text](plots/semiconductor.png)
+
+![Alt Text](plots/superconductor.png)
+
+More plots:
 
 ![Alt Text](plots/condensed matter.png)
+
 ![Alt Text](plots/cryogenic.png)
+
 ![Alt Text](plots/electronics.png)
+
 ![Alt Text](plots/engineering.png)
-![Alt Text](plots/epitaxial.png)
-![Alt Text](plots/graphene.png)
-![Alt Text](plots/josephson.png)
-![Alt Text](plots/machine learning.png)
-![Alt Text](plots/microwave.png)
-![Alt Text](plots/nanowire.png)
-![Alt Text](plots/noise.png)
-![Alt Text](plots/physics.png)
+
 ![Alt Text](plots/quality factor.png)
+
 ![Alt Text](plots/quantum dot.png)
-![Alt Text](plots/quantum.png)
-![Alt Text](plots/qubit.png)
-![Alt Text](plots/semiconductor.png)
-![Alt Text](plots/superconductivity.png)
-![Alt Text](plots/superconductor.png)
+
 ![Alt Text](plots/topological.png)
-![Alt Text](plots/)
