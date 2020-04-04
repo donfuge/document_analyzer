@@ -104,3 +104,7 @@ for i in range(0,len(pids),batch_size):
 
 print("writing", Config.sim_path)
 safe_pickle_dump(sim_dict, Config.sim_path)
+
+
+
+

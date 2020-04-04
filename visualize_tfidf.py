@@ -4,11 +4,11 @@ Created on Sat Apr  4 12:59:37 2020
 
 @author: fulop
 
-Visualize the document-term frequency matrix with PCA and t-SNE
+Visualizing papers using TF-IDF + PCA, t-SNE
 
 Loads the data from the tfidf.p, created by analyze.py
 
-mostly from
+some code from
 https://stackoverflow.com/questions/27494202/how-do-i-visualize-data-points-of-tf-idf-vectors-for-kmeans-clustering
 
 # https://stackoverflow.com/questions/7908636/possible-to-make-labels-appear-when-hovering-over-a-point-in-matplotlib
@@ -67,7 +67,7 @@ def hover(event):
 # load the tfidf matrix and meta
 meta = pickle.load(open(Config.meta_path, 'rb'))
 
-
+vocab = meta['vocab']
 
 out = pickle.load(open(Config.tfidf_path, 'rb'))
 X = out['X']
@@ -75,22 +75,22 @@ X = X.todense().astype(np.float32) # shape: (no. of documents, vocab size)
 
 names = meta['fnames']
 
-
+# vocab_inverse = {v: k for k, v in vocab.items()}
 pca_num_components = 2
 tsne_num_components = 2
 
 
 reduced_data = PCA(n_components=pca_num_components).fit_transform(X)
-embeddings = TSNE(n_components=tsne_num_components)
+embeddings = TSNE(n_components=tsne_num_components,random_state=2020,learning_rate=200)
 
 Y_tsne = embeddings.fit_transform(X)
-#%% PCA and t-SNE scatterplot, coloring based on vocabulary/bigram (makes plot
-# and saves it)
+#%% PCA and t-SNE scatterplot, coloring based on vocabulary/bigram (saves to file)
 
-vocab = meta['vocab']
-
-bigrams = ['quantum','josephson','qubit','machine learning','graphene','nanowire','microwave',
-            'noise', 'quantum dot', 'electronics', 'quality factor']
+bigrams = ['quantum','josephson','qubit','machine learning','graphene',
+           'nanowire','microwave', 'noise', 'quantum dot', 'electronics', 
+           'quality factor', 'superconductor', 'epitaxial', 'physics',
+           'topological','semiconductor','condensed matter','cryogenic',
+           'engineering','neural']
 
 # bigrams = ['quantum']
 
@@ -142,9 +142,10 @@ for bigram in bigrams:
   
   plt.show()
   plt.savefig("plots/" + bigram + ".png")
+  plt.close()
 
 #%% interactive plot, shows filename when hovering (PCA)
-bigram = 'microwave'
+bigram = 'neural'
 
 if bigram in vocab:
   bigram_id = vocab[bigram]
@@ -182,7 +183,7 @@ else:
   
 
 #%% interactive plot, shows filename when hovering (t-SNE)
-bigram = 'machine learning'
+bigram = 'neural'
 
 if bigram in vocab:
   bigram_id = vocab[bigram]
@@ -217,6 +218,7 @@ if bigram in vocab:
   plt.show()
 else:
   print('bigram not found in vocabulary: %s' % bigram)
+
 
 
 
