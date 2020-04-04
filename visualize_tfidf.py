@@ -24,7 +24,10 @@ import numpy as np
 
 from utils import safe_pickle_dump, strip_version, Config
 
+
 import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set()
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
@@ -53,6 +56,8 @@ def hover(event):
             if vis:
                 annot.set_visible(False)
                 fig.canvas.draw_idle()
+
+
 #%%
 
 
@@ -63,14 +68,53 @@ meta = pickle.load(open(Config.meta_path, 'rb'))
 
 out = pickle.load(open(Config.tfidf_path, 'rb'))
 X = out['X']
-X = X.todense().astype(np.float32)
+X = X.todense().astype(np.float32) # shape: (no. of documents, vocab size)
 
 names = meta['fnames']
-#%%
+
 
 pca_num_components = 2
 
 reduced_data = PCA(n_components=pca_num_components).fit_transform(X)
+
+#%% scatterplot, coloring based on vocabulary/bigram
+
+vocab = meta['vocab']
+
+bigrams = ['quantum','majorana','qubit','machine learning']
+
+for bigram in bigrams:
+
+  if bigram in vocab:
+    bigram_id = vocab[bigram]
+    print('id of %s : %d' % (bigram, bigram_id ))
+  else:
+    print('bigram not found in vocabulary: %s' % bigram)
+    break
+  
+  #threshold = 0.01
+  threshold = np.mean(X[:,bigram_id])
+  #threshold = np.quantile(X[:,bigram_id],0.7)
+  
+  true_document_idx = np.asarray(X[:,bigram_id] >= threshold)
+  true_document_idx = true_document_idx.reshape(-1).T
+  
+  
+  fig, ax = plt.subplots()
+  
+  sc = ax.scatter(reduced_data[true_document_idx,0], reduced_data[true_document_idx,1],color='g', label = bigram)
+  sc = ax.scatter(reduced_data[~true_document_idx,0], reduced_data[~true_document_idx,1],color='b', label = "not "+ bigram)
+  
+  plt.xlabel('Principal axis 1')
+  plt.ylabel('Principal axis 2')
+  
+  plt.title("PCA, bigram: %s" % bigram)
+  plt.legend()
+  plt.show()
+  plt.savefig("PCA_" + bigram + ".png")
+
+#%% interactive plot, show filename when hovering
+
 # print reduced_data
 
 fig, ax = plt.subplots()
@@ -84,6 +128,8 @@ annot.set_visible(False)
 
 fig.canvas.mpl_connect("motion_notify_event", hover)
 
+plt.xlabel('Principal axis 1')
+plt.ylabel('Principal axis 2')
 plt.show()
 #%%
 
