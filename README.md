@@ -51,7 +51,7 @@ The two major categories:
 
 ![quantum](plots/quantum.png)
 
-![machine learning](plots/machine learning.png)
+![machine learning]('plots/machine learning.png')
 
 Interestingly, noise and physics is everywhere:
 
