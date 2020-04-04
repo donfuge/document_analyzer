@@ -166,7 +166,7 @@ if bigram in vocab:
 
   ax.legend(handles=[true_patch, false_patch])
   
-  annot = ax.annotate("", xy=(-200,0), xytext=(-200,20),textcoords="offset points",
+  annot = ax.annotate("", xy=(-200,0), xytext=(-200,20),textcoords="offset points",fontsize =9,
                       bbox=dict(boxstyle="round", fc="w"),
                       arrowprops=dict(arrowstyle="->"))
   annot.set_visible(False)
@@ -204,7 +204,7 @@ if bigram in vocab:
 
   ax.legend(handles=[true_patch, false_patch])
   
-  annot = ax.annotate("", xy=(-200,0), xytext=(-200,20),textcoords="offset points",
+  annot = ax.annotate("", xy=(-200,0), xytext=(-200,20),textcoords="offset points",fontsize =9,
                       bbox=dict(boxstyle="round", fc="w"),
                       arrowprops=dict(arrowstyle="->"))
   annot.set_visible(False)
