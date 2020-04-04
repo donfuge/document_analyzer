@@ -32,6 +32,8 @@ The document point-cloud is visualized in an interactive way in visualize_tfidf.
 where hovering displays the filename of the training document. For this, I use
 the Qt backend of matplotlib.
 
+![Alt Text](plots/interactive.png)
+
 ## What I found
 
 With the dimensionality reduction techniques I found that my papers more or less
