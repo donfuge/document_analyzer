@@ -51,7 +51,7 @@ The two major categories:
 
 ![quantum](plots/quantum.png)
 
-![machine learning]('plots/machine learning.png')
+![machine learning](plots/machine%20learning.png)
 
 Interestingly, noise and physics is everywhere:
 
@@ -83,7 +83,7 @@ Material keywords:
 
 More plots:
 
-![Alt Text](plots/condensed matter.png)
+![Alt Text](plots/condensed%20matter.png)
 
 ![Alt Text](plots/cryogenic.png)
 
@@ -91,8 +91,8 @@ More plots:
 
 ![Alt Text](plots/engineering.png)
 
-![Alt Text](plots/quality factor.png)
+![Alt Text](plots/quality%20factor.png)
 
-![Alt Text](plots/quantum dot.png)
+![Alt Text](plots/quantum%20dot.png)
 
 ![Alt Text](plots/topological.png)
